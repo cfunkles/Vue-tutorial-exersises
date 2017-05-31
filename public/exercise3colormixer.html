@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Color Mixer Vue</title>
+</head>
+<body>
+    <!--Write an application which takes in two colors (hint: think deeply about which format you'd like to use)
+    Display a block of each color (hint: background-color on a div)
+    Display a block that is the "average" of the two colors (red = red1 + red2 / 2, etc.)-->
+    <ul>
+        <li><a href="/index.html">Home Vue example stuff</a></li>
+        <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+        <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+        <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+        <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+        <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+    </ul>
+    <div id="app">
+    <div>
+        <!--inputs for color values of first color-->
+        <h2>Color 1</h2>
+        <input v-model="firstColorRed" type="text" placeholder="Type Red number value">
+        <input v-model="firstColorGreen" type="text" placeholder="Type Green number value">
+        <input v-model="firstColorBlue" type="text" placeholder="Type Blue number value">
+    </div>
+    <div>
+        <!--inputs for color values of second color-->
+        <h2>Color 2</h2>
+        <input v-model="secondColorRed" type="text" placeholder="Type Red number value">
+        <input v-model="secondColorGreen" type="text" placeholder="Type Green number value">
+        <input v-model="secondColorBlue" type="text" placeholder="Type Blue number value">
+    </div>
+        <!--outputs for each color item-->
+        <div v-bind:style="{backgroundColor:rgbFirstColor}">
+            <h2>Color 1</h2>
+        </div>
+        <div v-bind:style="{backgroundColor:rgbSecondColor}">
+            <h2>Color 2</h2>
+        </div>
+        <div v-bind:style="{backgroundColor:averageColorValues}">
+            <h2>Color 1 and Color 2 combined</h2>
+        </div>
+    </div>
+
+    <script>
+        //the Vue object
+        mainAppVm = new Vue ({
+            el: '#app',//the element selected to apply Vue to
+            data: {
+                //the data values fromt the DOM
+                firstColorRed: '',
+                firstColorGreen: '',
+                firstColorBlue: '',
+                secondColorRed: '',
+                secondColorGreen: '',
+                secondColorBlue: ''
+            },
+            computed: {
+                //this function turns the inputs into numbers and returns the rgb value for styling
+                rgbFirstColor: function() {
+                    return 'rgb('+parseInt(this.firstColorRed)+','+parseInt(this.firstColorGreen)+','+parseInt(this.firstColorBlue)+')';
+                },
+                //same function as above but for the second inputs
+                rgbSecondColor: function() {
+                    return 'rgb('+parseInt(this.secondColorRed)+','+parseInt(this.secondColorGreen)+','+parseInt(this.secondColorBlue)+')';
+                },
+                //this function takes the average of each color value. Values must be integers with no decimal to run properly
+                averageColorValues: function() {
+                    var newRedValue = Math.ceil((parseInt(this.firstColorRed) + parseInt(this.secondColorRed)) / 2);
+                    var newGreenValue = Math.ceil((parseInt(this.firstColorGreen) + parseInt(this.secondColorGreen)) / 2);
+                    var newBlueValue = Math.ceil((parseInt(this.firstColorBlue) + parseInt(this.secondColorBlue)) / 2);
+                    return "rgb("+newRedValue+","+newGreenValue+","+newBlueValue+")";
+                }
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Exercise 1: "Hello!"
+Write an application which has an input field for the user's name, and displays "Hello, (user's name)" in giant letters below the input field.
+
+Exercise 2: "Live Calculator"
+Write an application which has two input fields "a" and "b" and two output divs, "+" and "*"
+Display the sum of "a" and "b" in the "+" output field
+Display the product of "a" and "b" in the "*" output field
+The output fields should update automatically when "a" or "b" are changed.
+
+Exercise 3: "Color Mixer"
+Write an application which takes in two colors (hint: think deeply about which format you'd like to use)
+Display a block of each color (hint: background-color on a div)
+Display a block that is the "average" of the two colors (red = red1 + red2 / 2, etc.)
+
+Exercise 4: "Unlearn jQuery"
+Write an application that contains a paragraph of black text. When a user hovers their mouse over the text, it should turn red. 
+
+
+Exercise 5: "Coffee!"
+
+Write an application that allows the user to record when they drank cups of coffee (hint: try the type="datetime" input field)
+The half-life of caffeine is about 10 hours. Assuming that one cup of coffee has 95mg of caffeine,
+display in real time the amount of caffeine still present in the user's system.
+
+Bonus points: Allow the user to select different types of caffeinated drinks.
+
+Extra bonus points: display a graph showing the caffeine in the user's system since their first cup.
+
+Super extra bonus points: allow the user to track different types of medicines (or other chemicals) in their system as well.

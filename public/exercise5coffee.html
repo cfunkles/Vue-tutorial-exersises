@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Coffee Vue</title>
+</head>
+<body>
+    <!--Write an application that allows the user to record when they drank cups of coffee 
+    (hint: try the type="datetime" input field)
+    The half-life of caffeine is about 10 hours. Assuming that one cup of coffee has 95mg of caffeine,
+    display in real time the amount of caffeine still present in the user's system.
+
+    Bonus points: Allow the user to select different types of caffeinated drinks.
+
+    Extra bonus points: display a graph showing the caffeine in the user's system since their first cup.
+
+    Super extra bonus points: allow the user to track different types of medicines (or other chemicals) 
+    in their system as well.-->
+    <ul>
+        <li><a href="/index.html">Home Vue example stuff</a></li>
+        <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+        <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+        <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+        <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+        <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+    </ul>
+    <div id="app">
+        <h1>Track your caffination amount</h1>
+        <!--time input for drink-->
+        <input v-model="timeOfCup" type="datetime-local" placeholder="time of cup">
+        <div>
+            <!--realtime coffee output-->
+            <h3>Amount of caffeine in body</h3>
+            <p>You have {{amountOfCaffinee}} % caffine left in your body.</p>
+        </div>
+        
+        <!--stuff for bonus, will fix later
+            <button v-on:click:="listenForAddDrink()">Start New Timer</button>
+        <div v-html="addDrinkTimer()">
+
+        </div>
+        -->
+    </div>
+    <script>
+        mainAppVm = new Vue({
+            el: '#app',
+            data: {
+                //user inputdat and date taken now.
+                timeOfCup: '',
+                currentTime: new Date()
+            },
+            computed: {
+                //going to look up half life equations a little bit more later tonight
+                //to calculate the half life of caffine in body do 95 * 0.5 to the nth power, 
+                //n is the number of hours.
+                amountOfCaffinee: function() {
+                    var amount = Math.pow((0.5), this.milliToHours());
+                    return amount * 100;
+                },
+                
+            },
+            methods: {
+                //get the difference between user input time and current time
+                timeElapsed: function() {
+                    var difference = this.currentTime - new Date(this.timeOfCup);
+                    console.log(difference);
+                    return difference;
+                },
+                //changes milliseconds to hours
+                milliToHours: function() {
+                    var hours = (this.timeElapsed() / (1000*60*60))%24;
+                    console.log(hours);
+                    return hours;
+                },
+                
+                /*for bonus
+                addDrinkTimer: function() {
+                    return '<p>You have {{amountOfCaffinee}} % caffine left in your body.</p>';
+                },
+                listenForAddDrink: function() {
+                    addDrinkTimer();
+                }
+                */
+            },
+            // 'created' is one of vue's 'lifecycle' hooks. 
+            //continuously gets new date.
+            created : function(){
+                var thatVm = this
+                setInterval(function(){
+                    thatVm.currentTime = new Date()
+                }, 777)
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Live Calculator in Vue</title>
+    
+</head>
+<body>
+    <!--Write an application which has two input fields "a" and "b" and two output divs, "+" and "*"
+    Display the sum of "a" and "b" in the "+" output field
+    Display the product of "a" and "b" in the "*" output field
+    The output fields should update automatically when "a" or "b" are changed.-->
+    <ul>
+        <li><a href="/index.html">Home Vue example stuff</a></li>
+        <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+        <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+        <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+        <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+        <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+    </ul>
+    <div id="app">
+        <!--input elements-->
+        <input v-model="a" type="text" placeholder="input number">
+        <input v-model="b" type="text" placeholder="input number">
+        <!--output elements-->
+        <div>
+            <h3>The Plus + field</h3>
+            <div v-text="add"></div>
+        </div>
+            <h3>The Multiply * field</h3>
+            <div v-text="multiply"></div>
+        <div>
+
+        </div>
+    </div>
+    <script>
+        mainAppVm = new Vue ({
+            el: '#app',
+            //this is the data given from the inputs
+            data: {
+                a: '',
+                b: ''
+            },
+            computed: {
+                //this function adds the input values and returns
+                add: function() {
+                    return parseInt(this.a) + parseInt(this.b);
+                },
+                //this function multiplies the input values and returns
+                multiply: function(a,b) {
+                    return this.a * this.b;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

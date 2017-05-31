@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>
+        <style>
+            .bordered { border: 2px dotted blue; }
+            .friend-list { float: right; width: 100px;}
+        </style>
+        <ul>
+            <li><a href="/index.html">Home Vue example stuff</a></li>
+            <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+            <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+            <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+            <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+            <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+        </ul>
+        <div id="app">
+            <input v-model="firstName">
+            <input v-model="lastName">
+            <span v-text="firstName"></span>
+            <!-- for v-bind:class, pass in an object. each key is a CSS class that you've defined previously. the values are BOOLEAN values from your data or computed properties that toggle that CSS class. -->
+            <p v-if="firstName.length > 0" v-bind:title="pTitle">Welcome to your dashboard, <span v-bind:class="{bordered: fnTitleCased}">{{firstName}}</span> <span v-bind:class="{bordered: lnTitleCased}">{{lastName}}</span>.</p>
+            <p>Try it with a computed property: welcome to the dashboard, <span v-bind:class="{bordered: fullNameTitleCased}">{{fullName}}</span>
+
+            <div v-html="testHtml"></div>
+            <div class="bordered friend-list">
+                <!--v-for is applied first, and copies the DOM. then, other directives are applied to each of the copies-->
+                <div v-on:click="friendInfo(friend, $event)" v-if="friend.online" v-for="friend in friends">
+                {{friend.firstName}}
+                </div>
+            </div>
+            <button v-on:click="rotateNames">Rotate</button>
+            <div v-for="message in messageLog">
+                <p>{{message}}</p>
+            </div>
+        </div>
+        <script src="/main.js"></script>
+    </body>
+</html>

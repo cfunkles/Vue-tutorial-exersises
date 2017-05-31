@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Using Vue to say hello</title>
+    <style>
+        .text {
+            font-size: 30px;
+            cololr: red;
+        }
+        .border {
+            border: 3px solid paleturquoise;
+        }
+    </style>
+</head>
+<body>
+    <!--Write an application which has an input field for the user's name, 
+    and displays "Hello, (user's name)" in giant letters below the input field.-->
+    <ul>
+        <!--a list to help us navigate through the different exercises-->
+        <li><a href="/index.html">Home Vue example stuff</a></li>
+        <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+        <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+        <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+        <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+        <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+    </ul>
+    <div id="app">
+        <!--the input-->
+        <input v-model="name" type="text">
+        <div>
+            <!--the output mixed with some html-->
+            <h1 class="text border">Hello! <span v-text="name"></span></h1>
+        </div>
+    </div>
+    <script>
+        var mainAppVm = new Vue({
+            el: '#app',
+            //the name data inputed
+            data: {
+                name: ''
+            },
+        });
+    </script>
+</body>
+</html>

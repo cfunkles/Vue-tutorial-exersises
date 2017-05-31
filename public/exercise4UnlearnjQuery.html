@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unlearn jQuery Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!--Write an application that contains a paragraph of black text. 
+    When a user hovers their mouse over the text, it should turn red.-->
+    <ul>
+        <li><a href="/index.html">Home Vue example stuff</a></li>
+        <li><a href="/exercise1hello.html">Hello Vue Exercise</a></li>
+        <li><a href="/exercise2livecalculator.html">Calculator Vue Exercise</a></li>
+        <li><a href="/exercise3colormixer.html">Color Mixer Vue Exercise</a></li>
+        <li><a href="/exercise4UnlearnjQuery.html">Unlearn jQuery Vue Exercise</a></li>
+        <li><a href="/exercise5coffee.html">Coffee Vue Exercise</a></li>
+    </ul>
+    <div id="app">
+        <h1>Lets unlearn jQuery (Maybe)</h1>
+        <!--changes reverses state when mousedover and reversed it again when mousedaway-->
+        <div v-on:mouseover="active = !active" v-on:mouseout="active = !active">
+            <!--red style applied only when mousedover-->
+            <p v-bind:style="{color:changeToRed()}">This paragraph text is black right now. When you hover over it, it should turn red.</p>
+        </div>
+    </div>
+    <script>
+        mainAppVm = new Vue({
+            el: '#app',
+            data: {
+                active: false
+            },
+            methods : {
+                //this function only returns red when active is true.
+                changeToRed: function() {
+                    if (this.active) {
+                        return 'red';
+                    };
+                }
+            }
+        });
+    </script>
+</body>
+</html>
